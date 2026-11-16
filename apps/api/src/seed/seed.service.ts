@@ -5,7 +5,7 @@ import {
   PERMISSIONS,
   ROLE_PERMISSION_SEED,
   PermissionCode,
-} from '@zhixiao-crm/shared'
+} from '@malt-crm/shared'
 import { PrismaService } from '../common/prisma/prisma.service'
 
 /** 开发环境的演示密码（测试与本地开发使用）；生产环境不使用 */

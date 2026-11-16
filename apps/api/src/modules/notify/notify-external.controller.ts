@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post, Put } from '@nestjs/common'
 import { Type } from 'class-transformer'
 import { IsArray, IsBoolean, IsIn, IsOptional, IsString, MaxLength, MinLength, ValidateNested } from 'class-validator'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
-import { BizException, ErrorCodes, PERMISSIONS } from '@zhixiao-crm/shared'
+import { BizException, ErrorCodes, PERMISSIONS } from '@malt-crm/shared'
 import { AuthUser, CurrentUser, Permissions } from '../../common/decorators'
 import { tr } from '../../common/locale'
 import { BOT_CATEGORIES, BotCategory, BotChannel, BotsService } from './bots.service'
@@ -119,7 +119,7 @@ export class NotifyExternalController {
     try {
       return await this.bots.send(
         bot,
-        tr('智销 CRM 测试消息', 'ZhiXiao CRM test message'),
+        tr('大麦 CRM 测试消息', 'Malt CRM test message'),
         tr(`由 ${me.name ?? me.email} 发送，收到即表示机器人配置正确。`, `Sent by ${me.name ?? me.email}. If you see this, the bot is set up correctly.`),
       )
     } catch (e) {

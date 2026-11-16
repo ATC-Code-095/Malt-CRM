@@ -1,4 +1,4 @@
-# 智销 CRM 鸿蒙 NEXT App
+# 大麦 CRM 鸿蒙 NEXT App
 
 ArkTS（Stage 模型，API 12+）工程，用 ArkWeb 加载内置网页包，原生提供推送、定位、拨号、附件选择与通知跳转。
 

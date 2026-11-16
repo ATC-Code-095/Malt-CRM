@@ -13,7 +13,7 @@ export class RootController {
       code: 0,
       message: 'ok',
       data: {
-        name: 'ZhiXiao CRM API',
+        name: 'Malt CRM API',
         version: 'v1',
         api: `${base}/api/v1`,
         health: `${base}/api/v1/health`,

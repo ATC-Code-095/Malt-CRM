@@ -10,10 +10,10 @@ import {
 } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { IsOptional, IsString, MinLength } from 'class-validator'
-import { PERMISSIONS } from '@zhixiao-crm/shared'
+import { PERMISSIONS } from '@malt-crm/shared'
 import { AuthUser, CurrentUser, Permissions } from '../../common/decorators'
 import { PrismaService } from '../../common/prisma/prisma.service'
-import { BizException, ErrorCodes } from '@zhixiao-crm/shared'
+import { BizException, ErrorCodes } from '@malt-crm/shared'
 import { tr } from '../../common/locale'
 
 class CreateGoalDto {

@@ -1,6 +1,6 @@
-# 智销 CRM（ZhiXiao CRM）
+# 大麦 CRM（Malt CRM）
 
-中文名：**智销 CRM** · English name: **ZhiXiao CRM**
+中文名：**大麦 CRM** · English name: **Malt CRM**
 
 面向 B2B 销售团队的客户关系管理系统：线索 → 客户 → 商机 → 报价 → 合同 → 回款全流程，含审批、报表、客户服务、营销获客与集团多主体管理，支持桌面浏览器、手机 Web（PWA）与 iOS / Android / 鸿蒙客户端。
 
@@ -56,8 +56,8 @@
 **1. 获取代码**
 
 ```bash
-git clone <本仓库地址> zhixiao-crm
-cd zhixiao-crm
+git clone <本仓库地址> malt-crm
+cd malt-crm
 ```
 
 **2. 填写配置**
@@ -129,7 +129,7 @@ docker compose --env-file .env.docker down               # 停止（数据保留
 **升级到新版本**
 
 ```bash
-docker compose --env-file .env.docker exec -T postgres pg_dump -U crm -Fc zhixiao_crm > backup-$(date +%F).dump   # 先备份
+docker compose --env-file .env.docker exec -T postgres pg_dump -U crm -Fc malt_crm > backup-$(date +%F).dump   # 先备份
 git pull
 export GIT_COMMIT=$(git rev-parse --short HEAD)
 docker compose --env-file .env.docker up -d --build      # 新迁移在 API 启动时自动执行
@@ -154,16 +154,16 @@ sudo apt install -y nginx postgresql
 ```bash
 sudo -u postgres psql <<'SQL'
 CREATE USER crm WITH PASSWORD '<数据库密码>';
-CREATE DATABASE zhixiao_crm OWNER crm;
+CREATE DATABASE malt_crm OWNER crm;
 SQL
 ```
 
 **3. 获取代码并配置**
 
 ```bash
-sudo mkdir -p /opt/zhixiao-crm && sudo chown $USER /opt/zhixiao-crm
-git clone <本仓库地址> /opt/zhixiao-crm
-cd /opt/zhixiao-crm
+sudo mkdir -p /opt/malt-crm && sudo chown $USER /opt/malt-crm
+git clone <本仓库地址> /opt/malt-crm
+cd /opt/malt-crm
 pnpm install --frozen-lockfile
 cp .env.example apps/api/.env
 ```
@@ -172,39 +172,39 @@ cp .env.example apps/api/.env
 
 ```ini
 NODE_ENV=production
-DATABASE_URL=postgresql://crm:<数据库密码>@127.0.0.1:5432/zhixiao_crm
+DATABASE_URL=postgresql://crm:<数据库密码>@127.0.0.1:5432/malt_crm
 REDIS_URL=                                # 不用 Redis 可留空
 JWT_ACCESS_SECRET=<openssl rand -hex 32 的结果>
 JWT_REFRESH_SECRET=<另一个随机串>
 CORS_ORIGIN=https://crm.example.com       # 对外访问地址
 AUTO_SEED=false
-FILE_STORAGE_DIR=/opt/zhixiao-crm/storage
+FILE_STORAGE_DIR=/opt/malt-crm/storage
 ```
 
 **4. 迁移数据库、构建、写入初始数据**
 
 ```bash
-cd /opt/zhixiao-crm/apps/api
+cd /opt/malt-crm/apps/api
 pnpm exec prisma migrate deploy           # 创建全部表（空库约 10 秒）
 pnpm exec prisma generate
 pnpm build                                # 输出 apps/api/dist
 node scripts/seed-cli.mjs                 # 写入角色、权限与初始账号，输出中的「初始密码」只显示这一次（可重复执行，不会重置已改的密码）
 
-cd /opt/zhixiao-crm
+cd /opt/malt-crm
 pnpm -C apps/web exec vite build          # 输出 apps/web/dist
 ```
 
 **5. 用 systemd 运行 API**
 
-创建 `/etc/systemd/system/zhixiao-crm-api.service`：
+创建 `/etc/systemd/system/malt-crm-api.service`：
 
 ```ini
 [Unit]
-Description=ZhiXiao CRM API
+Description=Malt CRM API
 After=network.target postgresql.service
 
 [Service]
-WorkingDirectory=/opt/zhixiao-crm/apps/api
+WorkingDirectory=/opt/malt-crm/apps/api
 ExecStart=/usr/bin/node dist/main.js
 Restart=always
 User=www-data
@@ -215,9 +215,9 @@ WantedBy=multi-user.target
 ```
 
 ```bash
-sudo mkdir -p /opt/zhixiao-crm/storage && sudo chown www-data /opt/zhixiao-crm/storage
+sudo mkdir -p /opt/malt-crm/storage && sudo chown www-data /opt/malt-crm/storage
 sudo systemctl daemon-reload
-sudo systemctl enable --now zhixiao-crm-api
+sudo systemctl enable --now malt-crm-api
 curl -s http://127.0.0.1:3001/api/v1/health    # "status":"ok"
 ```
 
@@ -225,13 +225,13 @@ curl -s http://127.0.0.1:3001/api/v1/health    # "status":"ok"
 
 **6. 配置 nginx**
 
-创建 `/etc/nginx/sites-available/zhixiao-crm`，然后 `sudo ln -s /etc/nginx/sites-available/zhixiao-crm /etc/nginx/sites-enabled/ && sudo nginx -t && sudo systemctl reload nginx`：
+创建 `/etc/nginx/sites-available/malt-crm`，然后 `sudo ln -s /etc/nginx/sites-available/malt-crm /etc/nginx/sites-enabled/ && sudo nginx -t && sudo systemctl reload nginx`：
 
 ```nginx
 server {
   listen 80;
   server_name crm.example.com;
-  root /opt/zhixiao-crm/apps/web/dist;
+  root /opt/malt-crm/apps/web/dist;
   index index.html;
   client_max_body_size 100m;                # 附件上传上限（系统设置 file.max_size_mb 最大 100）
 
@@ -257,13 +257,13 @@ HTTPS 可用 [Certbot](https://certbot.eff.org/)：`sudo certbot --nginx -d crm.
 **升级到新版本**
 
 ```bash
-cd /opt/zhixiao-crm
+cd /opt/malt-crm
 bash scripts/backup-db.sh                 # 先备份（需设置 DATABASE_URL，见下文）
 git pull
 pnpm install --frozen-lockfile
 cd apps/api && pnpm exec prisma migrate deploy && pnpm exec prisma generate && pnpm build && cd ../..
 pnpm -C apps/web exec vite build
-sudo systemctl restart zhixiao-crm-api
+sudo systemctl restart malt-crm-api
 curl -s http://127.0.0.1:3001/api/v1/health   # version / commit 应为新版本
 ```
 
@@ -310,10 +310,10 @@ API 只从环境变量读取配置（源码部署写在 `apps/api/.env`，Docker
 
 ```bash
 # 备份（保留 7 天）；本机无 pg_dump 时自动改用 docker compose 中的 postgres 容器
-DATABASE_URL='postgresql://crm:<密码>@127.0.0.1:5432/zhixiao_crm' OUT_DIR=/var/backups/zhixiao-crm bash scripts/backup-db.sh
+DATABASE_URL='postgresql://crm:<密码>@127.0.0.1:5432/malt_crm' OUT_DIR=/var/backups/malt-crm bash scripts/backup-db.sh
 
-# 恢复演练：恢复到临时库 zhixiao_crm_restore_test，不影响正式库
-DATABASE_URL='<同上>' bash scripts/restore-db.sh /var/backups/zhixiao-crm/zhixiao_crm_<时间>.dump
+# 恢复演练：恢复到临时库 malt_crm_restore_test，不影响正式库
+DATABASE_URL='<同上>' bash scripts/restore-db.sh /var/backups/malt-crm/malt_crm_<时间>.dump
 ```
 
 正式恢复：先停 API，对当前库再备份一次，执行 `pg_restore --clean --if-exists -d "$DATABASE_URL" <备份文件>`，再启动 API。附件目录（`FILE_STORAGE_DIR` 或 Docker 卷 `storage`）需单独复制备份。

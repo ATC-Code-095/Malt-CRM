@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { Prisma } from '@prisma/client'
-import { BizException, ErrorCodes, PERMISSIONS } from '@zhixiao-crm/shared'
+import { BizException, ErrorCodes, PERMISSIONS } from '@malt-crm/shared'
 import { AuthUser, CurrentUser, Permissions } from '../../common/decorators'
 import { nextDocNo } from '../../common/doc-no'
 import { recordEmailSend } from '../enablement/success.mapper'
@@ -1501,7 +1501,7 @@ export class GroupController {
         .slice(0, 3)
         .map((r) => `${r.rank}.${r.name}`)
         .join(' / ')}`,
-      tr('—— 智销 CRM 集团看板', '— ZhiXiao CRM group dashboard'),
+      tr('—— 大麦 CRM 集团看板', '— Malt CRM group dashboard'),
     ].join('\n')
     return { text, month: monthly.month }
   }

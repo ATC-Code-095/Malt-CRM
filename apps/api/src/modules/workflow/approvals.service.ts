@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { BizException, ErrorCodes, PageResult, QuoteStatus } from '@zhixiao-crm/shared'
+import { BizException, ErrorCodes, PageResult, QuoteStatus } from '@malt-crm/shared'
 import { AuthUser } from '../../common/decorators'
 import { PrismaService } from '../../common/prisma/prisma.service'
 import { PushService } from '../notify/push.service'

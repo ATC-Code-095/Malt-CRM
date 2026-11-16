@@ -1,4 +1,4 @@
-// 智销 CRM Service Worker：缓存应用壳，支持添加到主屏/离线打开
+// 大麦 CRM Service Worker：缓存应用壳，支持添加到主屏/离线打开
 const CACHE = 'aicrm-shell-v2'
 const SHELL = ['/', '/manifest.json', '/icons/icon-192.png', '/icons/icon-512.png']
 

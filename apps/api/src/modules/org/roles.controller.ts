@@ -7,10 +7,10 @@ import {
   Post,
 } from '@nestjs/common'
 import { IsArray, IsOptional, IsString, MinLength } from 'class-validator'
-import { PERMISSIONS, PERMISSIONS as P } from '@zhixiao-crm/shared'
+import { PERMISSIONS, PERMISSIONS as P } from '@malt-crm/shared'
 import { AuthUser, CurrentUser, Permissions } from '../../common/decorators'
 import { PrismaService } from '../../common/prisma/prisma.service'
-import { BizException, ErrorCodes } from '@zhixiao-crm/shared'
+import { BizException, ErrorCodes } from '@malt-crm/shared'
 
 class CreateRoleDto {
   @IsString()

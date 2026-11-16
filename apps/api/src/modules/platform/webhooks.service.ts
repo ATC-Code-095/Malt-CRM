@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { createHmac } from 'crypto'
-import { BizException, ErrorCodes } from '@zhixiao-crm/shared'
+import { BizException, ErrorCodes } from '@malt-crm/shared'
 import { AuthUser } from '../../common/decorators'
 import { PrismaService } from '../../common/prisma/prisma.service'
 
@@ -112,8 +112,8 @@ export class WebhooksService {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-ZhiXiao-Event': event,
-            'X-ZhiXiao-Signature': `t=${t},v1=${sig}`,
+            'X-Malt-Event': event,
+            'X-Malt-Signature': `t=${t},v1=${sig}`,
           },
           body: raw,
           signal: ctrl.signal,

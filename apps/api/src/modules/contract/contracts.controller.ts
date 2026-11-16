@@ -20,7 +20,7 @@ import {
   MinLength,
   ValidateNested,
 } from 'class-validator'
-import { PERMISSIONS } from '@zhixiao-crm/shared'
+import { PERMISSIONS } from '@malt-crm/shared'
 import { AuthUser, CurrentUser, Permissions } from '../../common/decorators'
 import { ContractService } from './contracts.service'
 

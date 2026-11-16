@@ -25,7 +25,7 @@ import {
   LeadSource,
   LeadStatus,
   PERMISSIONS,
-} from '@zhixiao-crm/shared'
+} from '@malt-crm/shared'
 import { AuthUser, CurrentUser, Permissions } from '../../common/decorators'
 import { LeadsService } from './leads.service'
 import { tr } from '../../common/locale'

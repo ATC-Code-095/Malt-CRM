@@ -1,5 +1,5 @@
 import { createHash } from 'crypto'
-import { BizException, ErrorCodes } from '@zhixiao-crm/shared'
+import { BizException, ErrorCodes } from '@malt-crm/shared'
 
 /**
  * 简易幂等：Redis 不可用时用内存 Map（单实例开发）

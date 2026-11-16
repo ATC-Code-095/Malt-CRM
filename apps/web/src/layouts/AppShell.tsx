@@ -766,7 +766,7 @@ export default function AppShell() {
         </Content>
         <div className="crm-statusbar">
           <Space size={12}>
-            <span>{t('shell.zhixiaoCrmTestEnvironment')}</span>
+            <span>{t('shell.maltCrmTestEnvironment')}</span>
             <span style={{ opacity: 0.5 }}>|</span>
             <span>{me.name ?? t('common.user')} · {me.roles?.[0] ?? 'USER'}</span>
           </Space>

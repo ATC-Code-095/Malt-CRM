@@ -12,7 +12,7 @@ import {
 import { ApiTags } from '@nestjs/swagger'
 import { IsArray, IsInt, IsOptional, IsString, MinLength, ValidateNested } from 'class-validator'
 import { Type } from 'class-transformer'
-import { PERMISSIONS } from '@zhixiao-crm/shared'
+import { PERMISSIONS } from '@malt-crm/shared'
 import { AuthUser, CurrentUser, Permissions, Public } from '../../common/decorators'
 import { CatalogService } from './catalog.service'
 

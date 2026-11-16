@@ -256,7 +256,7 @@ export default function MePage() {
         >{t('common.logout')}</Button>
       </Card>
 
-      <Typography.Paragraph type="secondary" style={{ fontSize: 12, marginTop: 12 }}>{t('me.zhixiaoCrmAiSales', { __APP_VERSION__, __APP_COMMIT__, v: ' ', v2: me.timezone ?? 'Asia/Shanghai' })}
+      <Typography.Paragraph type="secondary" style={{ fontSize: 12, marginTop: 12 }}>{t('me.maltCrmAiSales', { __APP_VERSION__, __APP_COMMIT__, v: ' ', v2: me.timezone ?? 'Asia/Shanghai' })}
       </Typography.Paragraph>
     </div>
   )

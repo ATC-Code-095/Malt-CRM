@@ -11,7 +11,7 @@ const httpApi = apiBase.startsWith('http://')
 
 const config: CapacitorConfig = {
   appId: process.env.CAP_APP_ID ?? 'com.itecent.crm',
-  appName: '智销CRM',
+  appName: '大麦CRM',
   webDir: 'www',
   server: {
     // 页面从 App 内加载（https://localhost），接口走 VITE_API_BASE；不使用 server.url 远程加载整站

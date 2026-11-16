@@ -7,7 +7,7 @@ import {
   ErrorCodes,
   LeadStatus,
   PageResult,
-} from '@zhixiao-crm/shared'
+} from '@malt-crm/shared'
 import { AuthUser } from '../../common/decorators'
 import { canReadRowWithShare, scopeWhere } from '../../common/data-scope'
 import { idempotentGuard, idempotentStore } from '../../common/idempotency'

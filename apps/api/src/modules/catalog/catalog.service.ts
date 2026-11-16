@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { randomBytes } from 'crypto'
 import { Prisma } from '@prisma/client'
-import { BizException, ErrorCodes, PageResult, QuoteStatus, addMoney, mulMoney, parseMoney } from '@zhixiao-crm/shared'
+import { BizException, ErrorCodes, PageResult, QuoteStatus, addMoney, mulMoney, parseMoney } from '@malt-crm/shared'
 import { AuthUser } from '../../common/decorators'
 import { nextDocNo } from '../../common/doc-no'
 import { assertVersion } from '../../common/optimistic'
@@ -731,7 +731,7 @@ export class CatalogService {
       ),
       body?.note ? `${tr('备注：', 'Note: ')}${body.note}` : '',
       `${tr('在线查看与确认：', 'View and confirm online: ')}${share.url}`,
-      tr('—— 智销 CRM', '— ZhiXiao CRM'),
+      tr('—— 大麦 CRM', '— Malt CRM'),
     ]
       .filter(Boolean)
       .join('\n')

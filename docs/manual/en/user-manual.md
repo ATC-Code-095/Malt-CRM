@@ -1,4 +1,4 @@
-# ZhiXiao CRM User Guide
+# Malt CRM User Guide
 
 > Applies to: v0.2.0 and later · For: sales reps, sales managers, sales operations, finance, customer service and other everyday users
 > System administrators should also read the [Administrator Guide](admin-manual.md).

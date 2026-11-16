@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 智销 CRM 冒烟：主链路 API 验证
+# 大麦 CRM 冒烟：主链路 API 验证
 set -euo pipefail
 BASE="${BASE:-http://127.0.0.1:3001/api/v1}"
 EMAIL="${EMAIL:-admin@demo.com}"

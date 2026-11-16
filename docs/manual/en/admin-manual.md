@@ -1,4 +1,4 @@
-# ZhiXiao CRM Administrator Guide
+# Malt CRM Administrator Guide
 
 > Applies to: v0.2.0 and later · For: system administrators (super admin role `SUPER_ADMIN`)
 > For everyday business tasks see the [User Guide](user-manual.md); for server deployment, backups and operations see the "部署" (Deployment) section of `README.md` in the repository root.
@@ -329,7 +329,7 @@ Menu: **Platform → Integrations**.
 
 1. **New**: enter the **URL** that receives events, the **events** (comma-separated, `*` for all) and a **Secret** for signing.
 2. **Test**: sends a test event to the URL; the result is recorded in the delivery log.
-3. The receiver should verify the `X-ZhiXiao-Signature` header (format `t=timestamp,v1=HMAC-SHA256`) to reject forged requests.
+3. The receiver should verify the `X-Malt-Signature` header (format `t=timestamp,v1=HMAC-SHA256`) to reject forged requests.
 4. Failed deliveries record the response code so you can troubleshoot from the log.
 
 ### 10.2 Tokens (external systems calling the API)

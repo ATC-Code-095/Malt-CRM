@@ -1,8 +1,8 @@
 {
   "string": [
-    { "name": "module_desc", "value": "ZhiXiao CRM main module" },
-    { "name": "EntryAbility_desc", "value": "ZhiXiao CRM" },
-    { "name": "EntryAbility_label", "value": "ZhiXiao CRM" },
+    { "name": "module_desc", "value": "Malt CRM main module" },
+    { "name": "EntryAbility_desc", "value": "Malt CRM" },
+    { "name": "EntryAbility_label", "value": "Malt CRM" },
     { "name": "reason_location", "value": "Records your location when you check in on a field visit" }
   ]
 }

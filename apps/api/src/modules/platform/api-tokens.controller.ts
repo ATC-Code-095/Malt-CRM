@@ -9,10 +9,10 @@ import {
 import { createHash, randomBytes } from 'crypto'
 import { IsOptional, IsString, MinLength } from 'class-validator'
 import { ApiTags } from '@nestjs/swagger'
-import { PERMISSIONS } from '@zhixiao-crm/shared'
+import { PERMISSIONS } from '@malt-crm/shared'
 import { AuthUser, CurrentUser, Permissions } from '../../common/decorators'
 import { PrismaService } from '../../common/prisma/prisma.service'
-import { BizException, ErrorCodes } from '@zhixiao-crm/shared'
+import { BizException, ErrorCodes } from '@malt-crm/shared'
 
 class CreateTokenDto {
   @IsString()

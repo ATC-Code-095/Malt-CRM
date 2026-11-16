@@ -4,7 +4,7 @@ import { Prisma } from '@prisma/client'
 import type { EmailTemplate, KnowledgeArticle } from '@prisma/client'
 import { randomUUID } from 'crypto'
 import { IsInt, IsOptional, IsString, Max, Min, MinLength } from 'class-validator'
-import { PERMISSIONS, ErrorCodes, BizException } from '@zhixiao-crm/shared'
+import { PERMISSIONS, ErrorCodes, BizException } from '@malt-crm/shared'
 import { AuthUser, CurrentUser, Permissions } from '../../common/decorators'
 import { PrismaService } from '../../common/prisma/prisma.service'
 import { PushService } from '../notify/push.service'
@@ -1001,10 +1001,10 @@ export class EnablementController {
     const vars = {
       客户名称: body.vars?.['客户名称'] ?? tr('示例客户', 'Sample Customer'),
       联系人: body.vars?.['联系人'] ?? tr('张经理', 'Mr. Zhang'),
-      产品: body.vars?.['产品'] ?? tr('智销 CRM', 'ZhiXiao CRM'),
+      产品: body.vars?.['产品'] ?? tr('大麦 CRM', 'Malt CRM'),
       金额: body.vars?.['金额'] ?? '98000',
       日期: body.vars?.['日期'] ?? new Date().toISOString().slice(0, 10),
-      我司: body.vars?.['我司'] ?? tr('智销科技', 'ZhiXiao Tech'),
+      我司: body.vars?.['我司'] ?? tr('大麦科技', 'Malt Tech'),
       ...(body.vars ?? {}),
     }
     const render = (s: string) =>
